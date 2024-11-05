@@ -21,6 +21,20 @@ console.clear();
     console.log(dates);
   }
 
+  function getCalenderTail() {
+    const dates = [];
+    const lastDay = new Date(year, month + 1, 0).getDay();
+
+    for( let i = 1; i < 7 - lastDay; i++){
+      dates.push({
+        date: i,
+        isToday: false,
+        isDisabled: true,
+      });
+    }
+    console.log(dates);
+  }
+
   function getCalenderBody(){
     const dates = []; //date:日付, day:曜日
     const lastDate = new Date(year, month + 1, 0).getDate();
@@ -36,5 +50,6 @@ console.clear();
   }
 
   // getCalenderBody();
-  getCalenderHead();
+  // getCalenderHead();
+  getCalenderTail();
 }
