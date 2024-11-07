@@ -3,8 +3,8 @@
 console.clear();
 
 {
-  const year = 2020;
-  const month = 4; //5月
+  let year = 2020;
+  let month = 4; //5月
   
   function getCalenderHead(){
     const dates = [];
@@ -68,7 +68,7 @@ console.clear();
       const tr = document.createElement('tr');
       week.forEach(date => {
         const td = document.createElement('td');
-
+        
         td.textContent = date.date;
         if (date.isToday){
           td.classList.add('today');
@@ -82,6 +82,26 @@ console.clear();
       document.querySelector('tbody').appendChild(tr);
     });
   }
+
+  document.getElementById('prev').addEventListener('click', ()=>{
+    month--;
+    if (month < 0) {
+      year--;
+      month = 11;
+    }
+
+    createCalendar();
+  });
+
+  document.getElementById('next').addEventListener('click', ()=>{
+    month++;
+    if (month > 11) {
+      year++;
+      month = 0;
+    }
+
+    createCalendar();
+  });
 
   createCalendar();
 }
