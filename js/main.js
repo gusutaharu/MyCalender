@@ -50,16 +50,20 @@ console.clear();
     return dates;
   }
 
-  function createCalendar() {
+  function clearCalender() {
     const tbody = document.querySelector('tbody');
 
     while (tbody.firstChild){
       tbody.removeChild(tbody.firstChild);
     }
+  }
 
+  function renderTitle() {
     const title = `${year}/${String(month + 1).padStart(2,0)}`;
     document.getElementById('title').textContent = title;
+  }
 
+  function renderWeeks() {
     const dates = [
       ...getCalenderHead(),
       ...getCalenderBody(),
@@ -90,6 +94,12 @@ console.clear();
       });
       document.querySelector('tbody').appendChild(tr);
     });
+  }
+
+  function createCalendar() {
+    clearCalender();
+    renderTitle();
+    renderWeeks();
   }
 
   document.getElementById('prev').addEventListener('click', ()=>{
